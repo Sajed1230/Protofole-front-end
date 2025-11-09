@@ -243,7 +243,7 @@ const Projects = () => {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/user/api/projects");
+      const res = await axios.get("https://protofole-back-end.onrender.com/user/api/projects");
       setProjects(res.data);
     } catch (err) {
       console.error("Error fetching projects:", err);
