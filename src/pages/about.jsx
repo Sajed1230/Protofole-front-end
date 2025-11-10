@@ -268,7 +268,7 @@ const About = () => {
         <AboutContainer>
           <AboutImage>
             <ImageWrapper>
-              <img src="imagesajed.jpeg" alt="About Me" />
+              <img src="sajdeimage.png" alt="About Me" />
             </ImageWrapper>
           </AboutImage>
 

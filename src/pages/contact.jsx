@@ -10,6 +10,8 @@ import {
   FaTwitter,
   FaInstagram,
 } from "react-icons/fa";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 // ====================== Animations ======================
 
@@ -258,18 +260,57 @@ const Footer = styled.footer`
 
 // ====================== Component ======================
 const Contact = () => {
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    alert(
-      `Thank you ${name}! Your message has been sent. I'll get back to you soon at ${email}.`
-    );
-    e.target.reset();
+
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      subject: e.target.subject.value,
+      message: e.target.message.value,
+    };
+
+    try {
+      const response = await axios.post(
+        "https://protofole-back-end.onrender.com/user/contact",
+        formData
+      );
+
+      if (response.status === 200) {
+        toast.success(
+          `Thank you ${formData.name}! Your message has been sent.`,
+          {
+            duration: 4000,
+            icon: "🚀",
+            style: {
+              borderRadius: "12px",
+              background: "#7a6086",
+              color: "#fff",
+              fontWeight: "500",
+              fontSize: "16px",
+              padding: "14px 18px",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+            },
+            iconTheme: {
+              primary: "#fff",
+              secondary: "#886a96",
+            },
+          }
+        );
+
+        e.target.reset();
+      }
+    } catch (error) {
+      console.error("❌ Error sending message:", error);
+      toast.error(
+        "Something went wrong while sending your message. Please try again."
+      );
+    }
   };
 
   return (
     <PageContainer>
+      <Toaster position="top-right" reverseOrder={false} />
       <ContactSection>
         <ContactContainer>
           <ContactInfo>
@@ -290,7 +331,7 @@ const Contact = () => {
                 </IconBox>
                 <ContactItemContent>
                   <h3>Email</h3>
-                  <a href="mailto:sajed@example.com">sajed@example.com</a>
+                  <a href="jokersajed11@gmail.com">sajed@example.com</a>
                 </ContactItemContent>
               </ContactItem>
 
@@ -300,7 +341,7 @@ const Contact = () => {
                 </IconBox>
                 <ContactItemContent>
                   <h3>Phone</h3>
-                  <a href="tel:+1234567890">+1 (234) 567-890</a>
+                  <a href="tel:+1234567890">+250 794098366</a>
                 </ContactItemContent>
               </ContactItem>
 
