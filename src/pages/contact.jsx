@@ -9,6 +9,7 @@ import {
   FaLinkedin,
   FaTwitter,
   FaInstagram,
+  FaFacebook,
 } from "react-icons/fa";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
@@ -258,55 +259,76 @@ const Footer = styled.footer`
   }
 `;
 
+const Spinner = styled.div`
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-left: 10px;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
 // ====================== Component ======================
 const Contact = () => {
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const [loading, setLoading] = React.useState(false);
 
-    const formData = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
-    };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true); // start spinner
 
-    try {
-      const response = await axios.post(
-        "https://protofole-back-end.onrender.com/user/contact",
-        formData
-      );
-
-      if (response.status === 200) {
-        toast.success(
-          `Thank you ${formData.name}! Your message has been sent.`,
-          {
-            duration: 4000,
-            icon: "🚀",
-            style: {
-              borderRadius: "12px",
-              background: "#7a6086",
-              color: "#fff",
-              fontWeight: "500",
-              fontSize: "16px",
-              padding: "14px 18px",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-            },
-            iconTheme: {
-              primary: "#fff",
-              secondary: "#886a96",
-            },
-          }
-        );
-
-        e.target.reset();
-      }
-    } catch (error) {
-      console.error("❌ Error sending message:", error);
-      toast.error(
-        "Something went wrong while sending your message. Please try again."
-      );
-    }
+  const formData = {
+    name: e.target.name.value,
+    email: e.target.email.value,
+    subject: e.target.subject.value,
+    message: e.target.message.value,
   };
+
+  try {
+    const response = await axios.post(
+      "https://protofole-back-end.onrender.com/user/contact",
+      formData
+    );
+
+    if (response.status === 200) {
+      toast.success(`Thank you ${formData.name}! Your message has been sent.`, {
+        duration: 4000,
+        icon: "🚀",
+        style: {
+          borderRadius: "12px",
+          background: "#7a6086",
+          color: "#fff",
+          fontWeight: "500",
+          fontSize: "16px",
+          padding: "14px 18px",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+        },
+        iconTheme: {
+          primary: "#fff",
+          secondary: "#886a96",
+        },
+      });
+      e.target.reset();
+    }
+  } catch (error) {
+    console.error("❌ Error sending message:", error);
+    toast.error(
+      "Something went wrong while sending your message. Please try again."
+    );
+  } finally {
+    setLoading(false); // stop spinner
+  }
+};
 
   return (
     <PageContainer>
@@ -412,7 +434,16 @@ const Contact = () => {
                 ></textarea>
               </FormGroup>
 
-              <SubmitButton type="submit">Send Message</SubmitButton>
+              <SubmitButton type="submit" disabled={loading}>
+                {loading ? (
+                  <>
+                    Sending
+                    <Spinner />
+                  </>
+                ) : (
+                  "Send Message"
+                )}
+              </SubmitButton>
             </ContactForm>
           </FormWrapper>
         </ContactContainer>
@@ -428,7 +459,7 @@ const Contact = () => {
             <FaLinkedin />
           </SocialLink>
           <SocialLink href="#">
-            <FaTwitter />
+          <FaFacebook />
           </SocialLink>
           <SocialLink href="#">
             <FaInstagram />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaFacebook } from "react-icons/fa";
 import axios from "axios";
 
 // ====================== Animations ======================
@@ -23,25 +23,34 @@ const Page = styled.div`
   min-height: 100vh;
   overflow-x: hidden;
   text-align: center;
+  background: #0d0d1a; /* ✅ Added for visibility on mobile */
 `;
 
 const Header = styled.header`
-  padding: 120px 20px 40px;
+  padding: 100px 20px 40px;
   animation: ${fadeInUp} 1s ease both;
 `;
 
 const Title = styled.h1`
-  font-size: 3rem;
+  font-size: 2.5rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  @media (max-width: 600px) {
+    font-size: 2rem;
+  }
 `;
 
 const Subtitle = styled.p`
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #aaa;
   max-width: 500px;
   margin: 15px auto 0;
+
+  @media (max-width: 600px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const ProjectsGrid = styled(motion.div)`
@@ -51,6 +60,8 @@ const ProjectsGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
+  width: 100%; /* ✅ Added */
+  box-sizing: border-box; /* ✅ Added */
 `;
 
 const Card = styled(motion.div)`
@@ -171,6 +182,7 @@ const SocialLinks = styled.div`
   }
 `;
 
+// ====================== Loader Animations ======================
 const textAnim = keyframes`
   0% { letter-spacing: 1px; transform: translateX(0px); }
   40% { letter-spacing: 2px; transform: translateX(26px); }
@@ -195,12 +207,11 @@ const loadAnim2 = keyframes`
   100% { transform: translateX(0px); width: 16px; }
 `;
 
-// ====================== Styled Loader ======================
 const LoaderWrapper = styled.div`
   width: 80px;
   height: 50px;
   position: relative;
-  margin: 100px auto; // center in page
+  margin: 100px auto;
 `;
 
 const LoaderText = styled.span`
@@ -234,12 +245,10 @@ const Load = styled.span`
   }
 `;
 
-
-
 // ====================== Component ======================
 const Projects = () => {
   const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true); // <-- loading state
+  const [loading, setLoading] = useState(true);
 
   const fetchProjects = async () => {
     try {
@@ -250,7 +259,7 @@ const Projects = () => {
     } catch (err) {
       console.error("Error fetching projects:", err);
     } finally {
-      setLoading(false); // stop loading
+      setLoading(false);
     }
   };
 
@@ -274,11 +283,9 @@ const Projects = () => {
         </LoaderWrapper>
       ) : projects.length > 0 ? (
         <ProjectsGrid
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          initial="visible" /* ✅ Changed for mobile visibility */
+          animate="visible"
           variants={{
-            hidden: {},
             visible: { transition: { staggerChildren: 0.2 } },
           }}
         >
@@ -296,7 +303,13 @@ const Projects = () => {
               whileHover={{ scale: 1.03 }}
             >
               <ProjectImage>
-                {p.image ? <img src={p.image} alt={p.appName} /> : "🖼️"}
+                <img
+                  src={
+                    p.image ||
+                    "https://via.placeholder.com/400x200?text=No+Image"
+                  }
+                  alt={p.appName}
+                />
               </ProjectImage>
               <Content>
                 <Category>{p.applicationType}</Category>
@@ -332,7 +345,7 @@ const Projects = () => {
             <FaLinkedin />
           </a>
           <a href="#">
-            <FaTwitter />
+            <FaFacebook />
           </a>
           <a href="#">
             <FaEnvelope />
@@ -343,4 +356,5 @@ const Projects = () => {
     </Page>
   );
 };
+
 export default Projects;
