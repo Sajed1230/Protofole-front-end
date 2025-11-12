@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaFacebook } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 // ====================== Animations ======================
@@ -320,24 +320,7 @@ const About = () => {
         </SkillsContainer>
       </SkillsSection>
 
-      {/* Footer */}
-      <Footer>
-        <SocialLinks>
-          <a href="#" title="GitHub">
-            <FaGithub />
-          </a>
-          <a href="#" title="LinkedIn">
-            <FaLinkedin />
-          </a>
-          <a href="#" title="Twitter">
-            <FaTwitter />
-          </a>
-          <a href="#" title="Email">
-            <FaEnvelope />
-          </a>
-        </SocialLinks>
-        <p>© 2025 Sajed Murtada. All rights reserved.</p>
-      </Footer>
+      
     </PageWrapper>
   );
 };

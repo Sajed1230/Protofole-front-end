@@ -336,23 +336,7 @@ const Projects = () => {
         <p>No projects found 😢</p>
       )}
 
-      <Footer>
-        <SocialLinks>
-          <a href="#">
-            <FaGithub />
-          </a>
-          <a href="#">
-            <FaLinkedin />
-          </a>
-          <a href="#">
-            <FaFacebook />
-          </a>
-          <a href="#">
-            <FaEnvelope />
-          </a>
-        </SocialLinks>
-        <p>© 2025 Sajed Murtada. All rights reserved.</p>
-      </Footer>
+      
     </Page>
   );
 };

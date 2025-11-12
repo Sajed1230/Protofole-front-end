@@ -449,27 +449,9 @@ const handleSubmit = async (e) => {
         </ContactContainer>
       </ContactSection>
 
-      <SocialSection>
+      
         <SocialTitle>Connect With Me</SocialTitle>
-        <SocialLinks>
-          <SocialLink href="#">
-            <FaGithub />
-          </SocialLink>
-          <SocialLink href="#">
-            <FaLinkedin />
-          </SocialLink>
-          <SocialLink href="#">
-          <FaFacebook />
-          </SocialLink>
-          <SocialLink href="#">
-            <FaInstagram />
-          </SocialLink>
-        </SocialLinks>
-      </SocialSection>
-
-      <Footer>
-        <p>© 2025 Sajed Murtada. All rights reserved.</p>
-      </Footer>
+      
     </PageContainer>
   );
 };

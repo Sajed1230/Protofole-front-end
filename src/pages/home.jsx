@@ -9,6 +9,7 @@ import {
   FaPaintBrush,
   FaLaptopCode,
   FaRocket,
+  FaFacebook,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -358,23 +359,7 @@ const Home = () => {
         </ServicesGrid>
       </Services>
 
-      <Footer>
-        <SocialLinks>
-          <a href="#">
-            <FaGithub />
-          </a>
-          <a href="#">
-            <FaLinkedin />
-          </a>
-          <a href="#">
-            <FaTwitter />
-          </a>
-          <a href="#">
-            <FaEnvelope />
-          </a>
-        </SocialLinks>
-        <p>&copy; 2025 Sajed Murtada. All rights reserved.</p>
-      </Footer>
+      
     </Container>
   );
 };
