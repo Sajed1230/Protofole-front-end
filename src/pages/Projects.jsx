@@ -35,6 +35,7 @@ const Page = styled.div`
   font-family: "Poppins", sans-serif;
   color: #fff;
   min-height: 100vh;
+  padding-top: 5rem;
   overflow-x: hidden;
   text-align: center;
   background: #0d0d1a;
