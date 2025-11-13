@@ -35,7 +35,6 @@ const Page = styled.div`
   font-family: "Poppins", sans-serif;
   color: #fff;
   min-height: 100vh;
-  padding-top: 5rem;
   overflow-x: hidden;
   text-align: center;
   background: #0d0d1a;
@@ -97,31 +96,26 @@ const Card = styled(motion.div)`
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
   overflow: hidden;
-  transition: all 0.4s ease, z-index 0.2s ease;
+  transition: all 0.4s ease;
   cursor: pointer;
   animation: ${glowPulse} 4s infinite ease-in-out;
   width: 100%;
   box-sizing: border-box;
-  position: relative; /* needed for z-index */
-  z-index: 0; /* default z-index */
 
   &:hover {
-    transform: translateY(-15px) scale(1.05); /* lift and slightly enlarge */
+    transform: translateY(-8px);
     border-color: rgba(102, 126, 234, 0.5);
-    box-shadow: 0 25px 40px rgba(102, 126, 234, 0.4);
-    z-index: 20; /* bring above other cards */
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
   }
 
   @media (max-width: 600px) {
     border-radius: 15px;
 
     &:hover {
-      transform: translateY(-8px) scale(1.03);
-      z-index: 20;
+      transform: translateY(-4px);
     }
   }
 `;
-
 
 const ProjectImage = styled.div`
   height: 200px;
@@ -156,10 +150,9 @@ const Content = styled.div`
   text-align: left;
 
   @media (max-width: 600px) {
-    padding: 12px 10px; // smaller padding for small screens
+    padding: 15px;
   }
 `;
-
 
 const Category = styled.span`
   font-size: clamp(0.7rem, 2vw, 0.75rem);
@@ -189,19 +182,9 @@ const Description = styled.p`
 
 const Tags = styled.div`
   display: flex;
-  flex-wrap: nowrap; /* don’t wrap to next line */
+  flex-wrap: wrap;
   gap: 8px;
   margin: 15px 0;
-  overflow-x: auto; /* allow horizontal scrolling */
-  padding-bottom: 5px;
-
-  &::-webkit-scrollbar {
-    height: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 2px;
-  }
 `;
 
 const Tag = styled.span`
@@ -210,7 +193,7 @@ const Tag = styled.span`
   border-radius: 12px;
   font-size: clamp(0.7rem, 1.8vw, 0.75rem);
   color: #ccc;
-  white-space: nowrap; /* prevent breaking tag text */
+  white-space: nowrap;
 `;
 
 const LinkButton = styled.a`
