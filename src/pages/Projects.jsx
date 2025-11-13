@@ -182,9 +182,19 @@ const Description = styled.p`
 
 const Tags = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* keep all tags in a single row */
   gap: 8px;
   margin: 15px 0;
+  overflow-x: auto; /* allow horizontal scroll if too many tags */
+  padding-bottom: 5px;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+  }
 `;
 
 const Tag = styled.span`
@@ -193,8 +203,10 @@ const Tag = styled.span`
   border-radius: 12px;
   font-size: clamp(0.7rem, 1.8vw, 0.75rem);
   color: #ccc;
-  white-space: nowrap;
+  white-space: nowrap; /* prevent breaking tag text */
+  flex-shrink: 0; /* prevent shrinking in flex container */
 `;
+
 
 const LinkButton = styled.a`
   display: inline-block;
