@@ -174,21 +174,29 @@ const Description = styled.p`
 // 🔥 PERFORMANCE FIX #4: Limit visible tags and remove horizontal scroll
 const Tags = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 15px 0;
-  max-height: 60px; /* Limit height */
-  overflow: hidden; /* Hide overflow instead of scrolling */
+  flex-wrap: wrap; // allows tags to go to next line
+  gap: 8px; // space between tags
+  max-width: 100%; // prevent overflow
+  overflow-x: auto; // scroll horizontally if too many tags
+  padding: 4px 0;
+
+  /* Optional: hide scrollbar in Webkit browsers */
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
 `;
 
 const Tag = styled.span`
-  background: rgba(255, 255, 255, 0.07);
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: clamp(0.7rem, 1.8vw, 0.75rem);
-  color: #ccc;
-  white-space: nowrap;
-  flex-shrink: 0;
+  //background-color: #05b3a4;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  white-space: nowrap; // prevent tag text from breaking
 `;
 
 const LinkButton = styled.a`
