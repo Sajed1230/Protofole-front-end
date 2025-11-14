@@ -353,7 +353,7 @@ const handleSubmit = async (e) => {
                 </IconBox>
                 <ContactItemContent>
                   <h3>Email</h3>
-                  <a href="jokersajed11@gmail.com">sajed@example.com</a>
+                  <a href="jokersajed11@gmail.com">jokersajed11@gmail.com</a>
                 </ContactItemContent>
               </ContactItem>
 
@@ -449,9 +449,7 @@ const handleSubmit = async (e) => {
         </ContactContainer>
       </ContactSection>
 
-      
-        <SocialTitle>Connect With Me</SocialTitle>
-      
+      <SocialTitle>Connect With Me</SocialTitle>
     </PageContainer>
   );
 };
