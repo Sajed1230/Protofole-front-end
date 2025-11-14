@@ -1,27 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { motion } from "framer-motion";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaTwitter,
-  FaEnvelope,
-  FaFacebook,
-  FaExclamationTriangle,
-  FaWifi,
-} from "react-icons/fa";
+import { FaExclamationTriangle, FaWifi } from "react-icons/fa";
 import axios from "axios";
 
 // ====================== Animations ======================
 const fadeInUp = keyframes`
   from { transform: translateY(40px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
-`;
-
-const glowPulse = keyframes`
-  0% { box-shadow: 0 0 0px rgba(102, 126, 234, 0.1); }
-  50% { box-shadow: 0 0 25px rgba(102, 126, 234, 0.3); }
-  100% { box-shadow: 0 0 0px rgba(102, 126, 234, 0.1); }
 `;
 
 const shake = keyframes`
@@ -76,7 +61,7 @@ const Subtitle = styled.p`
   }
 `;
 
-const ProjectsGrid = styled(motion.div)`
+const ProjectsGrid = styled.div`
   max-width: 1300px;
   margin: 0 auto;
   padding: 0 15px 60px;
@@ -91,20 +76,24 @@ const ProjectsGrid = styled(motion.div)`
   }
 `;
 
-const Card = styled(motion.div)`
+// 🔥 PERFORMANCE FIX #1: Remove continuous glowPulse animation
+// 🔥 PERFORMANCE FIX #2: Use transform for GPU acceleration
+// 🔥 PERFORMANCE FIX #3: Add will-change hint
+const Card = styled.div`
   background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
   overflow: hidden;
-  transition: all 0.4s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  animation: ${glowPulse} 4s infinite ease-in-out;
   width: 100%;
   box-sizing: border-box;
+  will-change: transform; /* GPU acceleration */
+  contain: layout style paint; /* CSS containment for better performance */
 
   &:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px) translateZ(0); /* Force GPU */
     border-color: rgba(102, 126, 234, 0.5);
     box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
   }
@@ -113,7 +102,7 @@ const Card = styled(motion.div)`
     border-radius: 15px;
 
     &:hover {
-      transform: translateY(-4px);
+      transform: translateY(-4px) translateZ(0);
     }
   }
 `;
@@ -133,10 +122,11 @@ const ProjectImage = styled.div`
     object-fit: cover;
     display: block;
     transition: transform 0.4s ease;
+    will-change: transform;
   }
 
   ${Card}:hover & img {
-    transform: scale(1.05);
+    transform: scale(1.05) translateZ(0);
   }
 
   @media (max-width: 600px) {
@@ -181,21 +171,14 @@ const Description = styled.p`
   margin: 8px 0;
 `;
 
+// 🔥 PERFORMANCE FIX #4: Limit visible tags and remove horizontal scroll
 const Tags = styled.div`
   display: flex;
-  flex-wrap: nowrap; /* keep all tags in a single row */
+  flex-wrap: wrap;
   gap: 8px;
   margin: 15px 0;
-  overflow-x: auto; /* allow horizontal scroll if too many tags */
-  padding-bottom: 5px;
-
-  &::-webkit-scrollbar {
-    height: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 2px;
-  }
+  max-height: 60px; /* Limit height */
+  overflow: hidden; /* Hide overflow instead of scrolling */
 `;
 
 const Tag = styled.span`
@@ -204,10 +187,9 @@ const Tag = styled.span`
   border-radius: 12px;
   font-size: clamp(0.7rem, 1.8vw, 0.75rem);
   color: #ccc;
-  white-space: nowrap; /* prevent breaking tag text */
-  flex-shrink: 0; /* prevent shrinking in flex container */
+  white-space: nowrap;
+  flex-shrink: 0;
 `;
-
 
 const LinkButton = styled.a`
   display: inline-block;
@@ -224,39 +206,11 @@ const LinkButton = styled.a`
   &:hover {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: #fff;
-    transform: translateY(-2px);
+    transform: translateY(-2px) translateZ(0);
   }
 
   @media (max-width: 600px) {
     padding: 8px 16px;
-  }
-`;
-
-const Footer = styled.footer`
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 40px 20px;
-
-  @media (max-width: 600px) {
-    padding: 30px 15px;
-  }
-`;
-
-const SocialLinks = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 15px;
-
-  a {
-    color: #aaa;
-    font-size: clamp(20px, 4vw, 22px);
-    transition: all 0.3s ease;
-
-    &:hover {
-      color: #667eea;
-      transform: translateY(-4px);
-    }
   }
 `;
 
@@ -398,14 +352,23 @@ const NetworkStatus = styled.div`
   position: fixed;
   top: 20px;
   right: 20px;
+  background: rgba(255, 59, 48, 0.9);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
   transform: translateZ(0); /* Fix mobile shaking */
 
   @media (max-width: 600px) {
-    position: sticky;
     top: 10px;
+    right: 10px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
   }
 `;
-
 
 const EmptyState = styled.div`
   padding: 60px 20px;
@@ -440,7 +403,6 @@ const Projects = () => {
   }, []);
 
   const fetchProjects = async () => {
-    // Check network connectivity first
     if (!navigator.onLine) {
       setError({
         type: "offline",
@@ -458,7 +420,7 @@ const Projects = () => {
       const res = await axios.get(
         "https://protofole-back-end.onrender.com/user/api/projects",
         {
-          timeout: 15000, // 15 second timeout
+          timeout: 15000,
           headers: {
             "Content-Type": "application/json",
           },
@@ -473,7 +435,6 @@ const Projects = () => {
     } catch (err) {
       console.error("Error fetching projects:", err);
 
-      // Detailed error handling
       if (err.code === "ECONNABORTED" || err.message.includes("timeout")) {
         setError({
           type: "timeout",
@@ -481,20 +442,17 @@ const Projects = () => {
             "Request timed out. The server is taking too long to respond. Please try again.",
         });
       } else if (err.response) {
-        // Server responded with error status
         setError({
           type: "server",
           message: `Server error (${err.response.status}). Please try again later.`,
         });
       } else if (err.request) {
-        // Request made but no response received
         setError({
           type: "network",
           message:
             "Network error. Unable to reach the server. Please check your connection.",
         });
       } else {
-        // Something else went wrong
         setError({
           type: "unknown",
           message: "An unexpected error occurred. Please try again.",
@@ -515,7 +473,6 @@ const Projects = () => {
     fetchProjects();
   }, []);
 
-  // Auto-retry when coming back online
   useEffect(() => {
     if (isOnline && error?.type === "offline") {
       fetchProjects();
@@ -524,9 +481,8 @@ const Projects = () => {
 
   return (
     <Page>
-      {/* Network Status Indicator */}
       {!isOnline && (
-        <NetworkStatus $isOnline={false}>
+        <NetworkStatus>
           <FaWifi />
           Offline
         </NetworkStatus>
@@ -564,31 +520,9 @@ const Projects = () => {
           </RetryButton>
         </ErrorContainer>
       ) : projects.length > 0 ? (
-        <ProjectsGrid
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: { staggerChildren: 0.15 },
-            },
-          }}
-        >
+        <ProjectsGrid>
           {projects.map((p) => (
-            <Card
-              key={p._id}
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.6, ease: "easeOut" },
-                },
-              }}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-            >
+            <Card key={p._id}>
               <ProjectImage>
                 <img
                   src={
@@ -610,8 +544,9 @@ const Projects = () => {
                   {p.description || "No description available"}
                 </Description>
                 <Tags>
+                  {/* 🔥 PERFORMANCE FIX #5: Limit tags to first 5 */}
                   {Array.isArray(p.tools) && p.tools.length > 0 ? (
-                    p.tools.map((t, j) => <Tag key={j}>{t}</Tag>)
+                    p.tools.slice(0, 5).map((t, j) => <Tag key={j}>{t}</Tag>)
                   ) : (
                     <Tag>No tags</Tag>
                   )}
