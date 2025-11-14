@@ -40,6 +40,7 @@ const Page = styled.div`
   background: #0d0d1a;
   position: relative;
   width: 100%;
+  margin-top: 3rem;
 `;
 
 const Header = styled.header`
@@ -397,28 +398,14 @@ const NetworkStatus = styled.div`
   position: fixed;
   top: 20px;
   right: 20px;
-  background: ${(props) =>
-    props.$isOnline ? "rgba(52, 199, 89, 0.2)" : "rgba(255, 59, 48, 0.2)"};
-  border: 1px solid
-    ${(props) =>
-      props.$isOnline ? "rgba(52, 199, 89, 0.5)" : "rgba(255, 59, 48, 0.5)"};
-  color: ${(props) => (props.$isOnline ? "#34c759" : "#ff3b30")};
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  z-index: 1000;
-  animation: ${fadeInUp} 0.5s ease;
+  transform: translateZ(0); /* Fix mobile shaking */
 
   @media (max-width: 600px) {
+    position: sticky;
     top: 10px;
-    right: 10px;
-    font-size: 0.75rem;
-    padding: 6px 12px;
   }
 `;
+
 
 const EmptyState = styled.div`
   padding: 60px 20px;
