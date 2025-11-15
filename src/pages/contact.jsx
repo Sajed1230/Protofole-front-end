@@ -32,8 +32,8 @@ const fadeInUp = keyframes`
 `;
 
 // ====================== Styled Components ======================
+// ====================== Styled Components ======================
 const PageContainer = styled.div`
-  //background: #0a0a0a;
   color: #fff;
   min-height: 100vh;
   overflow-x: hidden;
@@ -41,7 +41,7 @@ const PageContainer = styled.div`
 `;
 
 const ContactSection = styled.section`
-  padding: 150px 50px 100px;
+  padding: clamp(80px, 10vw, 150px) clamp(20px, 5vw, 50px) clamp(50px, 8vw, 100px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,13 +51,17 @@ const ContactContainer = styled.div`
   max-width: 1200px;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(40px, 6vw, 80px);
   align-items: start;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     grid-template-columns: 1fr;
     gap: 50px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 30px;
   }
 `;
 
@@ -66,36 +70,32 @@ const ContactInfo = styled.div`
 `;
 
 const ContactTitle = styled.h1`
-  font-size: 56px;
+  font-size: clamp(32px, 6vw, 56px);
   margin-bottom: 20px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1.2;
-
-  @media (max-width: 768px) {
-    font-size: 40px;
-  }
 `;
 
 const ContactSubtitle = styled.p`
-  font-size: 20px;
+  font-size: clamp(16px, 2vw, 20px);
   color: #888;
-  margin-bottom: 40px;
+  margin-bottom: clamp(20px, 3vw, 40px);
   line-height: 1.6;
 `;
 
 const ContactDetails = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: clamp(20px, 3vw, 30px);
 `;
 
 const ContactItem = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 20px;
+  gap: clamp(15px, 2vw, 20px);
+  padding: clamp(15px, 2vw, 20px);
   background: rgba(255, 255, 255, 0.03);
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -104,14 +104,20 @@ const ContactItem = styled.div`
   &:hover {
     background: rgba(102, 126, 234, 0.1);
     border-color: rgba(102, 126, 234, 0.3);
-    transform: translateX(10px);
+    transform: translateX(5px);
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
 `;
 
 const IconBox = styled.div`
-  font-size: 28px;
-  width: 60px;
-  height: 60px;
+  font-size: clamp(20px, 4vw, 28px);
+  width: clamp(50px, 10vw, 60px);
+  height: clamp(50px, 10vw, 60px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -122,7 +128,7 @@ const IconBox = styled.div`
 
 const ContactItemContent = styled.div`
   h3 {
-    font-size: 18px;
+    font-size: clamp(16px, 2vw, 18px);
     margin-bottom: 5px;
   }
 
@@ -131,6 +137,7 @@ const ContactItemContent = styled.div`
     color: #888;
     text-decoration: none;
     transition: 0.3s ease;
+    font-size: clamp(14px, 1.8vw, 16px);
   }
 
   a:hover {
@@ -144,22 +151,23 @@ const FormWrapper = styled.div`
 
 const ContactForm = styled.form`
   background: rgba(255, 255, 255, 0.03);
-  padding: 50px;
+  padding: clamp(30px, 4vw, 50px);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 
-  @media (max-width: 768px) {
-    padding: 30px;
+  @media (max-width: 480px) {
+    padding: 20px;
   }
 `;
 
 const FormGroup = styled.div`
-  margin-bottom: 25px;
+  margin-bottom: clamp(15px, 2.5vw, 25px);
+
   label {
     display: block;
     margin-bottom: 10px;
     color: #b8b8b8;
-    font-size: 14px;
+    font-size: clamp(12px, 2vw, 14px);
     font-weight: 600;
     letter-spacing: 1px;
   }
@@ -167,12 +175,12 @@ const FormGroup = styled.div`
   input,
   textarea {
     width: 100%;
-    padding: 15px 20px;
+    padding: clamp(12px, 2vw, 15px);
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     color: #fff;
-    font-size: 16px;
+    font-size: clamp(14px, 2vw, 16px);
     transition: all 0.3s ease;
 
     &:focus {
@@ -184,19 +192,19 @@ const FormGroup = styled.div`
   }
 
   textarea {
-    min-height: 150px;
+    min-height: clamp(100px, 15vw, 150px);
     resize: vertical;
   }
 `;
 
 const SubmitButton = styled.button`
   width: 100%;
-  padding: 18px;
+  padding: clamp(14px, 2vw, 18px);
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;
   border: none;
   border-radius: 10px;
-  font-size: 18px;
+  font-size: clamp(16px, 2vw, 18px);
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s ease;
@@ -210,19 +218,19 @@ const SubmitButton = styled.button`
 
 const SocialSection = styled.section`
   text-align: center;
-  padding: 80px 50px;
+  padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 50px);
   background: #0f0f0f;
 `;
 
 const SocialTitle = styled.h2`
-  font-size: 36px;
+  font-size: clamp(24px, 5vw, 36px);
   margin-bottom: 30px;
 `;
 
 const SocialLinks = styled.div`
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: clamp(15px, 4vw, 30px);
   flex-wrap: wrap;
 `;
 
@@ -230,9 +238,9 @@ const SocialLink = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80px;
-  height: 80px;
-  font-size: 32px;
+  width: clamp(60px, 15vw, 80px);
+  height: clamp(60px, 15vw, 80px);
+  font-size: clamp(24px, 5vw, 32px);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -250,12 +258,13 @@ const SocialLink = styled.a`
 
 const Footer = styled.footer`
   text-align: center;
-  padding: 40px 50px;
+  padding: clamp(20px, 3vw, 40px) clamp(20px, 5vw, 50px);
   background: #0a0a0a;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+
   p {
     color: #666;
-    font-size: 14px;
+    font-size: clamp(12px, 2vw, 14px);
   }
 `;
 
@@ -270,14 +279,11 @@ const Spinner = styled.div`
   margin-left: 10px;
 
   @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 `;
+
 
 // ====================== Component ======================
 const Contact = () => {
