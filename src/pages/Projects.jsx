@@ -15,6 +15,133 @@ const shake = keyframes`
   75% { transform: translateX(10px); }
 `;
 
+// ====================== Banter Loader Animations ======================
+const moveBox1 = keyframes`
+  9.0909090909% { transform: translate(-26px, 0); }
+  18.1818181818% { transform: translate(0px, 0); }
+  27.2727272727% { transform: translate(0px, 0); }
+  36.3636363636% { transform: translate(26px, 0); }
+  45.4545454545% { transform: translate(26px, 26px); }
+  54.5454545455% { transform: translate(26px, 26px); }
+  63.6363636364% { transform: translate(26px, 26px); }
+  72.7272727273% { transform: translate(26px, 0px); }
+  81.8181818182% { transform: translate(0px, 0px); }
+  90.9090909091% { transform: translate(-26px, 0px); }
+  100% { transform: translate(0px, 0px); }
+`;
+
+const moveBox2 = keyframes`
+  9.0909090909% { transform: translate(0, 0); }
+  18.1818181818% { transform: translate(26px, 0); }
+  27.2727272727% { transform: translate(0px, 0); }
+  36.3636363636% { transform: translate(26px, 0); }
+  45.4545454545% { transform: translate(26px, 26px); }
+  54.5454545455% { transform: translate(26px, 26px); }
+  63.6363636364% { transform: translate(26px, 26px); }
+  72.7272727273% { transform: translate(26px, 26px); }
+  81.8181818182% { transform: translate(0px, 26px); }
+  90.9090909091% { transform: translate(0px, 26px); }
+  100% { transform: translate(0px, 0px); }
+`;
+
+const moveBox3 = keyframes`
+  9.0909090909% { transform: translate(-26px, 0); }
+  18.1818181818% { transform: translate(-26px, 0); }
+  27.2727272727% { transform: translate(0px, 0); }
+  36.3636363636% { transform: translate(-26px, 0); }
+  45.4545454545% { transform: translate(-26px, 0); }
+  54.5454545455% { transform: translate(-26px, 0); }
+  63.6363636364% { transform: translate(-26px, 0); }
+  72.7272727273% { transform: translate(-26px, 0); }
+  81.8181818182% { transform: translate(-26px, -26px); }
+  90.9090909091% { transform: translate(0px, -26px); }
+  100% { transform: translate(0px, 0px); }
+`;
+
+const moveBox4 = keyframes`
+  9.0909090909% { transform: translate(-26px, 0); }
+  18.1818181818% { transform: translate(-26px, 0); }
+  27.2727272727% { transform: translate(-26px, -26px); }
+  36.3636363636% { transform: translate(0px, -26px); }
+  45.4545454545% { transform: translate(0px, 0px); }
+  54.5454545455% { transform: translate(0px, -26px); }
+  63.6363636364% { transform: translate(0px, -26px); }
+  72.7272727273% { transform: translate(0px, -26px); }
+  81.8181818182% { transform: translate(-26px, -26px); }
+  90.9090909091% { transform: translate(-26px, 0px); }
+  100% { transform: translate(0px, 0px); }
+`;
+
+const moveBox5 = keyframes`
+  9.0909090909% { transform: translate(0, 0); }
+  18.1818181818% { transform: translate(0, 0); }
+  27.2727272727% { transform: translate(0, 0); }
+  36.3636363636% { transform: translate(26px, 0); }
+  45.4545454545% { transform: translate(26px, 0); }
+  54.5454545455% { transform: translate(26px, 0); }
+  63.6363636364% { transform: translate(26px, 0); }
+  72.7272727273% { transform: translate(26px, 0); }
+  81.8181818182% { transform: translate(26px, -26px); }
+  90.9090909091% { transform: translate(0px, -26px); }
+  100% { transform: translate(0px, 0px); }
+`;
+
+const moveBox6 = keyframes`
+  9.0909090909% { transform: translate(0, 0); }
+  18.1818181818% { transform: translate(-26px, 0); }
+  27.2727272727% { transform: translate(-26px, 0); }
+  36.3636363636% { transform: translate(0px, 0); }
+  45.4545454545% { transform: translate(0px, 0); }
+  54.5454545455% { transform: translate(0px, 0); }
+  63.6363636364% { transform: translate(0px, 0); }
+  72.7272727273% { transform: translate(0px, 26px); }
+  81.8181818182% { transform: translate(-26px, 26px); }
+  90.9090909091% { transform: translate(-26px, 0px); }
+  100% { transform: translate(0px, 0px); }
+`;
+
+const moveBox7 = keyframes`
+  9.0909090909% { transform: translate(26px, 0); }
+  18.1818181818% { transform: translate(26px, 0); }
+  27.2727272727% { transform: translate(26px, 0); }
+  36.3636363636% { transform: translate(0px, 0); }
+  45.4545454545% { transform: translate(0px, -26px); }
+  54.5454545455% { transform: translate(26px, -26px); }
+  63.6363636364% { transform: translate(0px, -26px); }
+  72.7272727273% { transform: translate(0px, -26px); }
+  81.8181818182% { transform: translate(0px, 0px); }
+  90.9090909091% { transform: translate(26px, 0px); }
+  100% { transform: translate(0px, 0px); }
+`;
+
+const moveBox8 = keyframes`
+  9.0909090909% { transform: translate(0, 0); }
+  18.1818181818% { transform: translate(-26px, 0); }
+  27.2727272727% { transform: translate(-26px, -26px); }
+  36.3636363636% { transform: translate(0px, -26px); }
+  45.4545454545% { transform: translate(0px, -26px); }
+  54.5454545455% { transform: translate(0px, -26px); }
+  63.6363636364% { transform: translate(0px, -26px); }
+  72.7272727273% { transform: translate(0px, -26px); }
+  81.8181818182% { transform: translate(26px, -26px); }
+  90.9090909091% { transform: translate(26px, 0px); }
+  100% { transform: translate(0px, 0px); }
+`;
+
+const moveBox9 = keyframes`
+  9.0909090909% { transform: translate(-26px, 0); }
+  18.1818181818% { transform: translate(-26px, 0); }
+  27.2727272727% { transform: translate(0px, 0); }
+  36.3636363636% { transform: translate(-26px, 0); }
+  45.4545454545% { transform: translate(0px, 0); }
+  54.5454545455% { transform: translate(0px, 0); }
+  63.6363636364% { transform: translate(-26px, 0); }
+  72.7272727273% { transform: translate(-26px, 0); }
+  81.8181818182% { transform: translate(-52px, 0); }
+  90.9090909091% { transform: translate(-26px, 0); }
+  100% { transform: translate(0px, 0); }
+`;
+
 // ====================== Styled Components ======================
 const Page = styled.div`
   font-family: "Poppins", sans-serif;
@@ -76,9 +203,6 @@ const ProjectsGrid = styled.div`
   }
 `;
 
-// 🔥 PERFORMANCE FIX #1: Remove continuous glowPulse animation
-// 🔥 PERFORMANCE FIX #2: Use transform for GPU acceleration
-// 🔥 PERFORMANCE FIX #3: Add will-change hint
 const Card = styled.div`
   background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
@@ -89,11 +213,11 @@ const Card = styled.div`
   cursor: pointer;
   width: 100%;
   box-sizing: border-box;
-  will-change: transform; /* GPU acceleration */
-  contain: layout style paint; /* CSS containment for better performance */
+  will-change: transform;
+  contain: layout style paint;
 
   &:hover {
-    transform: translateY(-8px) translateZ(0); /* Force GPU */
+    transform: translateY(-8px) translateZ(0);
     border-color: rgba(102, 126, 234, 0.5);
     box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
   }
@@ -171,16 +295,14 @@ const Description = styled.p`
   margin: 8px 0;
 `;
 
-// 🔥 PERFORMANCE FIX #4: Limit visible tags and remove horizontal scroll
 const Tags = styled.div`
   display: flex;
-  flex-wrap: wrap; // allows tags to go to next line
-  gap: 8px; // space between tags
-  max-width: 100%; // prevent overflow
-  overflow-x: auto; // scroll horizontally if too many tags
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 100%;
+  overflow-x: auto;
   padding: 4px 0;
 
-  /* Optional: hide scrollbar in Webkit browsers */
   &::-webkit-scrollbar {
     height: 4px;
   }
@@ -191,12 +313,11 @@ const Tags = styled.div`
 `;
 
 const Tag = styled.span`
-  //background-color: #05b3a4;
   color: white;
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.9rem;
-  white-space: nowrap; // prevent tag text from breaking
+  white-space: nowrap;
 `;
 
 const LinkButton = styled.a`
@@ -222,70 +343,111 @@ const LinkButton = styled.a`
   }
 `;
 
-// ====================== Loader Animations ======================
-const textAnim = keyframes`
-  0% { letter-spacing: 1px; transform: translateX(0px); }
-  40% { letter-spacing: 2px; transform: translateX(26px); }
-  80% { letter-spacing: 1px; transform: translateX(32px); }
-  90% { letter-spacing: 2px; transform: translateX(0px); }
-  100% { letter-spacing: 1px; transform: translateX(0px); }
-`;
-
-const loadAnim = keyframes`
-  0% { width: 16px; transform: translateX(0px); }
-  40% { width: 100%; transform: translateX(0px); }
-  80% { width: 16px; transform: translateX(64px); }
-  90% { width: 100%; transform: translateX(0px); }
-  100% { width: 16px; transform: translateX(0px); }
-`;
-
-const loadAnim2 = keyframes`
-  0% { transform: translateX(0px); width: 16px; }
-  40% { transform: translateX(0%); width: 80%; }
-  80% { width: 100%; transform: translateX(0px); }
-  90% { width: 80%; transform: translateX(15px); }
-  100% { transform: translateX(0px); width: 16px; }
-`;
-
-const LoaderWrapper = styled.div`
-  width: 80px;
-  height: 50px;
-  position: relative;
-  margin: 100px auto;
+// ====================== Banter Loader Styled Components ======================
+const BanterLoaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  width: 100%;
+  padding: 40px 20px;
 
   @media (max-width: 600px) {
-    margin: 60px auto;
+    min-height: 200px;
+    padding: 30px 15px;
   }
 `;
 
-const LoaderText = styled.span`
-  position: absolute;
-  top: 0;
-  color: #c8b6ff;
-  font-size: clamp(0.7rem, 2vw, 0.8rem);
-  letter-spacing: 1px;
-  animation: ${textAnim} 3.5s ease both infinite;
+const BanterLoader = styled.div`
+  position: relative;
+  width: 72px;
+  height: 72px;
+
+  @media (max-width: 600px) {
+    width: 60px;
+    height: 60px;
+    transform: scale(0.9);
+  }
+
+  @media (max-width: 400px) {
+    width: 50px;
+    height: 50px;
+    transform: scale(0.8);
+  }
 `;
 
-const Load = styled.span`
-  background-color: #9a79ff;
-  border-radius: 50px;
-  display: block;
-  height: 16px;
-  width: 16px;
-  bottom: 0;
-  position: absolute;
-  transform: translateX(64px);
-  animation: ${loadAnim} 3.5s ease both infinite;
+const BanterBox = styled.div`
+  float: left;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
 
   &::before {
-    position: absolute;
     content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background-color: #d1c2ff;
-    border-radius: inherit;
-    animation: ${loadAnim2} 3.5s ease both infinite;
+    background: rgb(81, 228, 220);
+    border-radius: 6px;
+    transform: rotate(45deg);
+    opacity: 0.7;
+  }
+
+  &:nth-child(3n) {
+    margin-right: 0;
+    margin-bottom: 6px;
+  }
+
+  &:nth-child(1)::before,
+  &:nth-child(4)::before {
+    margin-left: 26px;
+  }
+
+  &:nth-child(3)::before {
+    margin-top: 52px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:nth-child(1) {
+    animation: ${moveBox1} 4s infinite;
+  }
+
+  &:nth-child(2) {
+    animation: ${moveBox2} 4s infinite;
+  }
+
+  &:nth-child(3) {
+    animation: ${moveBox3} 4s infinite;
+  }
+
+  &:nth-child(4) {
+    animation: ${moveBox4} 4s infinite;
+  }
+
+  &:nth-child(5) {
+    animation: ${moveBox5} 4s infinite;
+  }
+
+  &:nth-child(6) {
+    animation: ${moveBox6} 4s infinite;
+  }
+
+  &:nth-child(7) {
+    animation: ${moveBox7} 4s infinite;
+  }
+
+  &:nth-child(8) {
+    animation: ${moveBox8} 4s infinite;
+  }
+
+  &:nth-child(9) {
+    animation: ${moveBox9} 4s infinite;
   }
 `;
 
@@ -368,7 +530,7 @@ const NetworkStatus = styled.div`
   align-items: center;
   gap: 10px;
   z-index: 1000;
-  transform: translateZ(0); /* Fix mobile shaking */
+  transform: translateZ(0);
 
   @media (max-width: 600px) {
     top: 10px;
@@ -504,10 +666,19 @@ const Projects = () => {
       </Header>
 
       {loading ? (
-        <LoaderWrapper>
-          <LoaderText>loading</LoaderText>
-          <Load />
-        </LoaderWrapper>
+        <BanterLoaderWrapper>
+          <BanterLoader>
+            <BanterBox />
+            <BanterBox />
+            <BanterBox />
+            <BanterBox />
+            <BanterBox />
+            <BanterBox />
+            <BanterBox />
+            <BanterBox />
+            <BanterBox />
+          </BanterLoader>
+        </BanterLoaderWrapper>
       ) : error ? (
         <ErrorContainer>
           <ErrorIcon>
@@ -552,7 +723,6 @@ const Projects = () => {
                   {p.description || "No description available"}
                 </Description>
                 <Tags>
-                  {/* 🔥 PERFORMANCE FIX #5: Limit tags to first 5 */}
                   {Array.isArray(p.tools) && p.tools.length > 0 ? (
                     p.tools.slice(0, 5).map((t, j) => <Tag key={j}>{t}</Tag>)
                   ) : (
