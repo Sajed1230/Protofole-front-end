@@ -15,131 +15,49 @@ const shake = keyframes`
   75% { transform: translateX(10px); }
 `;
 
-// ====================== Banter Loader Animations ======================
-const moveBox1 = keyframes`
-  9.0909090909% { transform: translate(-26px, 0); }
-  18.1818181818% { transform: translate(0px, 0); }
-  27.2727272727% { transform: translate(0px, 0); }
-  36.3636363636% { transform: translate(26px, 0); }
-  45.4545454545% { transform: translate(26px, 26px); }
-  54.5454545455% { transform: translate(26px, 26px); }
-  63.6363636364% { transform: translate(26px, 26px); }
-  72.7272727273% { transform: translate(26px, 0px); }
-  81.8181818182% { transform: translate(0px, 0px); }
-  90.9090909091% { transform: translate(-26px, 0px); }
-  100% { transform: translate(0px, 0px); }
+// ====================== Binary Loader Animations ======================
+const binaryAnimationA = keyframes`
+  0% {
+    transform: translate(30px, 0) rotate(30deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(30px, 150px) rotate(-50deg);
+    opacity: 1;
+  }
 `;
 
-const moveBox2 = keyframes`
-  9.0909090909% { transform: translate(0, 0); }
-  18.1818181818% { transform: translate(26px, 0); }
-  27.2727272727% { transform: translate(0px, 0); }
-  36.3636363636% { transform: translate(26px, 0); }
-  45.4545454545% { transform: translate(26px, 26px); }
-  54.5454545455% { transform: translate(26px, 26px); }
-  63.6363636364% { transform: translate(26px, 26px); }
-  72.7272727273% { transform: translate(26px, 26px); }
-  81.8181818182% { transform: translate(0px, 26px); }
-  90.9090909091% { transform: translate(0px, 26px); }
-  100% { transform: translate(0px, 0px); }
+const binaryAnimationB = keyframes`
+  0% {
+    transform: translate(50px, 0) rotate(-40deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(40px, 150px) rotate(80deg);
+    opacity: 1;
+  }
 `;
 
-const moveBox3 = keyframes`
-  9.0909090909% { transform: translate(-26px, 0); }
-  18.1818181818% { transform: translate(-26px, 0); }
-  27.2727272727% { transform: translate(0px, 0); }
-  36.3636363636% { transform: translate(-26px, 0); }
-  45.4545454545% { transform: translate(-26px, 0); }
-  54.5454545455% { transform: translate(-26px, 0); }
-  63.6363636364% { transform: translate(-26px, 0); }
-  72.7272727273% { transform: translate(-26px, 0); }
-  81.8181818182% { transform: translate(-26px, -26px); }
-  90.9090909091% { transform: translate(0px, -26px); }
-  100% { transform: translate(0px, 0px); }
+const binaryAnimationC = keyframes`
+  0% {
+    transform: translate(70px, 0) rotate(10deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(60px, 150px) rotate(70deg);
+    opacity: 1;
+  }
 `;
 
-const moveBox4 = keyframes`
-  9.0909090909% { transform: translate(-26px, 0); }
-  18.1818181818% { transform: translate(-26px, 0); }
-  27.2727272727% { transform: translate(-26px, -26px); }
-  36.3636363636% { transform: translate(0px, -26px); }
-  45.4545454545% { transform: translate(0px, 0px); }
-  54.5454545455% { transform: translate(0px, -26px); }
-  63.6363636364% { transform: translate(0px, -26px); }
-  72.7272727273% { transform: translate(0px, -26px); }
-  81.8181818182% { transform: translate(-26px, -26px); }
-  90.9090909091% { transform: translate(-26px, 0px); }
-  100% { transform: translate(0px, 0px); }
-`;
-
-const moveBox5 = keyframes`
-  9.0909090909% { transform: translate(0, 0); }
-  18.1818181818% { transform: translate(0, 0); }
-  27.2727272727% { transform: translate(0, 0); }
-  36.3636363636% { transform: translate(26px, 0); }
-  45.4545454545% { transform: translate(26px, 0); }
-  54.5454545455% { transform: translate(26px, 0); }
-  63.6363636364% { transform: translate(26px, 0); }
-  72.7272727273% { transform: translate(26px, 0); }
-  81.8181818182% { transform: translate(26px, -26px); }
-  90.9090909091% { transform: translate(0px, -26px); }
-  100% { transform: translate(0px, 0px); }
-`;
-
-const moveBox6 = keyframes`
-  9.0909090909% { transform: translate(0, 0); }
-  18.1818181818% { transform: translate(-26px, 0); }
-  27.2727272727% { transform: translate(-26px, 0); }
-  36.3636363636% { transform: translate(0px, 0); }
-  45.4545454545% { transform: translate(0px, 0); }
-  54.5454545455% { transform: translate(0px, 0); }
-  63.6363636364% { transform: translate(0px, 0); }
-  72.7272727273% { transform: translate(0px, 26px); }
-  81.8181818182% { transform: translate(-26px, 26px); }
-  90.9090909091% { transform: translate(-26px, 0px); }
-  100% { transform: translate(0px, 0px); }
-`;
-
-const moveBox7 = keyframes`
-  9.0909090909% { transform: translate(26px, 0); }
-  18.1818181818% { transform: translate(26px, 0); }
-  27.2727272727% { transform: translate(26px, 0); }
-  36.3636363636% { transform: translate(0px, 0); }
-  45.4545454545% { transform: translate(0px, -26px); }
-  54.5454545455% { transform: translate(26px, -26px); }
-  63.6363636364% { transform: translate(0px, -26px); }
-  72.7272727273% { transform: translate(0px, -26px); }
-  81.8181818182% { transform: translate(0px, 0px); }
-  90.9090909091% { transform: translate(26px, 0px); }
-  100% { transform: translate(0px, 0px); }
-`;
-
-const moveBox8 = keyframes`
-  9.0909090909% { transform: translate(0, 0); }
-  18.1818181818% { transform: translate(-26px, 0); }
-  27.2727272727% { transform: translate(-26px, -26px); }
-  36.3636363636% { transform: translate(0px, -26px); }
-  45.4545454545% { transform: translate(0px, -26px); }
-  54.5454545455% { transform: translate(0px, -26px); }
-  63.6363636364% { transform: translate(0px, -26px); }
-  72.7272727273% { transform: translate(0px, -26px); }
-  81.8181818182% { transform: translate(26px, -26px); }
-  90.9090909091% { transform: translate(26px, 0px); }
-  100% { transform: translate(0px, 0px); }
-`;
-
-const moveBox9 = keyframes`
-  9.0909090909% { transform: translate(-26px, 0); }
-  18.1818181818% { transform: translate(-26px, 0); }
-  27.2727272727% { transform: translate(0px, 0); }
-  36.3636363636% { transform: translate(-26px, 0); }
-  45.4545454545% { transform: translate(0px, 0); }
-  54.5454545455% { transform: translate(0px, 0); }
-  63.6363636364% { transform: translate(-26px, 0); }
-  72.7272727273% { transform: translate(-26px, 0); }
-  81.8181818182% { transform: translate(-52px, 0); }
-  90.9090909091% { transform: translate(-26px, 0); }
-  100% { transform: translate(0px, 0); }
+const binaryAnimationD = keyframes`
+  0% {
+    transform: translate(30px, 0) rotate(-50deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(45px, 150px) rotate(30deg);
+    opacity: 1;
+  }
 `;
 
 // ====================== Styled Components ======================
@@ -149,10 +67,17 @@ const Page = styled.div`
   min-height: 100vh;
   overflow-x: hidden;
   text-align: center;
-  background: #0d0d1a;
+  background: 
+    linear-gradient(rgba(13, 13, 26, 0.9), rgba(13, 13, 26, 0.9)),
+    url('/undefined.jpeg') center/cover no-repeat fixed;
   position: relative;
   width: 100%;
-  margin-top: 3rem;
+  padding-top: 100px;
+
+  @media (max-width: 768px) {
+    padding-top: 80px;
+    background-attachment: scroll;
+  }
 `;
 
 const Header = styled.header`
@@ -189,17 +114,32 @@ const Subtitle = styled.p`
 `;
 
 const ProjectsGrid = styled.div`
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 15px 60px;
+  padding: 40px 20px 80px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: clamp(20px, 3vw, 30px);
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
   width: 100%;
   box-sizing: border-box;
+  align-items: start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 30px 20px 60px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 30px 15px 50px;
+  }
 
   @media (max-width: 600px) {
-    padding: 0 10px 40px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 15px 40px;
   }
 `;
 
@@ -214,7 +154,10 @@ const Card = styled.div`
   width: 100%;
   box-sizing: border-box;
   will-change: transform;
-  contain: layout style paint;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 450px;
 
   &:hover {
     transform: translateY(-8px) translateZ(0);
@@ -222,7 +165,13 @@ const Card = styled.div`
     box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
   }
 
+  @media (max-width: 768px) {
+    min-height: 420px;
+    border-radius: 18px;
+  }
+
   @media (max-width: 600px) {
+    min-height: auto;
     border-radius: 15px;
 
     &:hover {
@@ -261,11 +210,21 @@ const ProjectImage = styled.div`
 `;
 
 const Content = styled.div`
-  padding: 20px;
+  padding: 24px;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 12px;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+    gap: 10px;
+  }
 
   @media (max-width: 600px) {
-    padding: 15px;
+    padding: 18px;
+    gap: 8px;
   }
 `;
 
@@ -282,9 +241,10 @@ const Category = styled.span`
 
 const ProjectTitle = styled.h3`
   font-size: clamp(1.1rem, 3vw, 1.3rem);
-  margin: 10px 0 5px;
+  margin: 0;
   word-wrap: break-word;
-  line-height: 1.3;
+  line-height: 1.4;
+  font-weight: 600;
 `;
 
 const Description = styled.p`
@@ -292,7 +252,12 @@ const Description = styled.p`
   font-size: clamp(0.85rem, 2vw, 0.9rem);
   line-height: 1.6;
   word-wrap: break-word;
-  margin: 8px 0;
+  margin: 0;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 const Tags = styled.div`
@@ -300,51 +265,67 @@ const Tags = styled.div`
   flex-wrap: wrap;
   gap: 8px;
   max-width: 100%;
-  overflow-x: auto;
-  padding: 4px 0;
+  margin: 4px 0;
 
-  &::-webkit-scrollbar {
-    height: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 2px;
+  @media (max-width: 600px) {
+    gap: 6px;
   }
 `;
 
 const Tag = styled.span`
-  color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.9rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
   white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(102, 126, 234, 0.2);
+    border-color: rgba(102, 126, 234, 0.3);
+  }
+
+  @media (max-width: 600px) {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
 `;
 
 const LinkButton = styled.a`
   display: inline-block;
   background: rgba(102, 126, 234, 0.15);
   color: #667eea;
-  padding: 8px 20px;
+  padding: 10px 24px;
   border-radius: 25px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
   font-size: clamp(0.85rem, 2vw, 0.9rem);
-  margin-top: 10px;
+  margin-top: auto;
+  text-align: center;
+  align-self: flex-start;
+  border: 1px solid rgba(102, 126, 234, 0.3);
 
   &:hover {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: #fff;
     transform: translateY(-2px) translateZ(0);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    border-color: transparent;
   }
 
   @media (max-width: 600px) {
-    padding: 8px 16px;
+    padding: 9px 20px;
+    width: 100%;
+    align-self: stretch;
+    text-align: center;
   }
 `;
 
-// ====================== Banter Loader Styled Components ======================
-const BanterLoaderWrapper = styled.div`
+// ====================== Binary Loader Styled Components ======================
+const BinaryLoaderWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -353,101 +334,124 @@ const BanterLoaderWrapper = styled.div`
   padding: 40px 20px;
 
   @media (max-width: 600px) {
-    min-height: 200px;
+    min-height: 250px;
     padding: 30px 15px;
   }
 `;
 
-const BanterLoader = styled.div`
+const BinaryLoader = styled.div`
+  width: 130px;
+  height: 170px;
   position: relative;
-  width: 72px;
-  height: 72px;
+  font-family: inherit;
 
-  @media (max-width: 600px) {
-    width: 60px;
-    height: 60px;
-    transform: scale(0.9);
+  &::before,
+  &::after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 30px;
+    left: 15px;
+    z-index: 1;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 20px solid #1b2a33;
+    transform: scale(1);
+    transition: all 0.2s ease;
   }
 
-  @media (max-width: 400px) {
-    width: 50px;
-    height: 50px;
-    transform: scale(0.8);
+  &::after {
+    border-right: 15px solid transparent;
+    border-bottom: 20px solid #162229;
+  }
+
+  @media (max-width: 600px) {
+    width: 110px;
+    height: 150px;
+    transform: scale(0.9);
+
+    &::before,
+    &::after {
+      left: 10px;
+      bottom: 25px;
+      border-left-width: 40px;
+      border-right-width: 40px;
+      border-bottom-width: 18px;
+    }
+
+    &::after {
+      border-right-width: 12px;
+    }
   }
 `;
 
-const BanterBox = styled.div`
-  float: left;
-  position: relative;
-  width: 20px;
-  height: 20px;
-  margin-right: 6px;
+const GettingThere = styled.span`
+  width: 120%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: -7%;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: white;
+  font-family: "Poppins", sans-serif;
 
-  &::before {
-    content: "";
+  @media (max-width: 600px) {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+`;
+
+const Binary = styled.span`
+  width: 100%;
+  height: 140px;
+  display: block;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 15px;
+  z-index: 2;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
     position: absolute;
-    left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgb(81, 228, 220);
-    border-radius: 6px;
-    transform: rotate(45deg);
-    opacity: 0.7;
+    left: 0;
+    opacity: 0;
   }
 
-  &:nth-child(3n) {
-    margin-right: 0;
-    margin-bottom: 6px;
+  @media (max-width: 600px) {
+    left: 10px;
+    height: 120px;
+
+    &::before,
+    &::after {
+      font-size: 20px;
+    }
   }
 
-  &:nth-child(1)::before,
-  &:nth-child(4)::before {
-    margin-left: 26px;
+  &:nth-child(1)::before {
+    content: "0";
+    animation: ${binaryAnimationA} 1.1s linear infinite;
   }
 
-  &:nth-child(3)::before {
-    margin-top: 52px;
+  &:nth-child(1)::after {
+    content: "0";
+    animation: ${binaryAnimationB} 1.3s linear infinite;
   }
 
-  &:last-child {
-    margin-bottom: 0;
+  &:nth-child(2)::before {
+    content: "1";
+    animation: ${binaryAnimationC} 0.9s linear infinite;
   }
 
-  &:nth-child(1) {
-    animation: ${moveBox1} 4s infinite;
-  }
-
-  &:nth-child(2) {
-    animation: ${moveBox2} 4s infinite;
-  }
-
-  &:nth-child(3) {
-    animation: ${moveBox3} 4s infinite;
-  }
-
-  &:nth-child(4) {
-    animation: ${moveBox4} 4s infinite;
-  }
-
-  &:nth-child(5) {
-    animation: ${moveBox5} 4s infinite;
-  }
-
-  &:nth-child(6) {
-    animation: ${moveBox6} 4s infinite;
-  }
-
-  &:nth-child(7) {
-    animation: ${moveBox7} 4s infinite;
-  }
-
-  &:nth-child(8) {
-    animation: ${moveBox8} 4s infinite;
-  }
-
-  &:nth-child(9) {
-    animation: ${moveBox9} 4s infinite;
+  &:nth-child(2)::after {
+    content: "1";
+    animation: ${binaryAnimationD} 0.7s linear infinite;
   }
 `;
 
@@ -573,24 +577,16 @@ const Projects = () => {
   }, []);
 
   const fetchProjects = async () => {
-    if (!navigator.onLine) {
-      setError({
-        type: "offline",
-        message:
-          "No internet connection. Please check your network and try again.",
-      });
-      setLoading(false);
-      return;
-    }
-
+    // Don't rely solely on navigator.onLine as it's not always accurate on mobile
     try {
       setLoading(true);
       setError(null);
 
+      // Use a longer timeout for mobile networks (30 seconds)
       const res = await axios.get(
         "https://protofole-back-end.onrender.com/user/api/projects",
         {
-          timeout: 15000,
+          timeout: 30000, // Increased from 15s to 30s for mobile networks
           headers: {
             "Content-Type": "application/json",
           },
@@ -605,22 +601,40 @@ const Projects = () => {
     } catch (err) {
       console.error("Error fetching projects:", err);
 
+      // Check if it's actually a network error or just a slow connection
       if (err.code === "ECONNABORTED" || err.message.includes("timeout")) {
-        setError({
-          type: "timeout",
-          message:
-            "Request timed out. The server is taking too long to respond. Please try again.",
-        });
+        // Check if navigator.onLine is actually false before showing timeout
+        if (!navigator.onLine) {
+          setError({
+            type: "offline",
+            message:
+              "No internet connection detected. Please check your network and try again.",
+          });
+        } else {
+          setError({
+            type: "timeout",
+            message:
+              "The request is taking longer than expected. This might be due to a slow connection. Please try again.",
+          });
+        }
       } else if (err.response) {
         setError({
           type: "server",
           message: `Server error (${err.response.status}). Please try again later.`,
         });
+      } else if (err.request && !navigator.onLine) {
+        // Only show offline error if navigator.onLine confirms it
+        setError({
+          type: "offline",
+          message:
+            "No internet connection. Please check your network and try again.",
+        });
       } else if (err.request) {
+        // Network error but might be temporary
         setError({
           type: "network",
           message:
-            "Network error. Unable to reach the server. Please check your connection.",
+            "Unable to connect to the server. Please check your internet connection and try again.",
         });
       } else {
         setError({
@@ -644,10 +658,11 @@ const Projects = () => {
   }, []);
 
   useEffect(() => {
+    // Retry when coming back online
     if (isOnline && error?.type === "offline") {
       fetchProjects();
     }
-  }, [isOnline]);
+  }, [isOnline, error?.type]);
 
   return (
     <Page>
@@ -666,19 +681,13 @@ const Projects = () => {
       </Header>
 
       {loading ? (
-        <BanterLoaderWrapper>
-          <BanterLoader>
-            <BanterBox />
-            <BanterBox />
-            <BanterBox />
-            <BanterBox />
-            <BanterBox />
-            <BanterBox />
-            <BanterBox />
-            <BanterBox />
-            <BanterBox />
-          </BanterLoader>
-        </BanterLoaderWrapper>
+        <BinaryLoaderWrapper>
+          <BinaryLoader>
+            <Binary />
+            <Binary />
+            <GettingThere>LOADING PROJECTS...</GettingThere>
+          </BinaryLoader>
+        </BinaryLoaderWrapper>
       ) : error ? (
         <ErrorContainer>
           <ErrorIcon>

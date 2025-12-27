@@ -98,7 +98,7 @@ const Nav = styled.ul`
 
   @media (max-width: 768px) {
     position: fixed;
-    top: 70px; /* below header */
+    top: 80px;
     left: 0;
     width: 100%;
     background: rgba(10, 10, 10, 0.98);
@@ -112,13 +112,14 @@ const Nav = styled.ul`
     transition: max-height 0.4s ease-in-out;
     z-index: 999;
     padding: ${({ open }) => (open ? "1rem 0" : "0")};
+    margin: 0;
+    border-top: 1px solid rgba(102, 126, 234, 0.2);
   }
 `;
 
 const NavItem = styled.li``;
 
 const NavLinkStyled = styled(Link)`
-  color: #ffffff;
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
@@ -126,6 +127,7 @@ const NavLinkStyled = styled(Link)`
   padding: 0.5rem 1rem;
   border-radius: 10px;
   transition: all 0.3s ease;
+  color: ${({ active }) => (active ? "#667eea" : "#fff")};
 
   &:hover {
     background: rgba(102, 126, 234, 0.1);
@@ -147,8 +149,6 @@ const NavLinkStyled = styled(Link)`
     width: 100%;
   }
 
-  color: ${({ active }) => (active ? "#667eea" : "#fff")};
-
   @media (max-width: 768px) {
     font-size: 1.2rem;
     padding: 1rem 2rem;
@@ -162,6 +162,12 @@ const Hamburger = styled.div`
   font-size: 1.5rem;
   cursor: pointer;
   color: #fff;
+  z-index: 1001;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   @media (max-width: 768px) {
     display: block;
@@ -176,7 +182,7 @@ const Header = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [deleting, setDeleting] = useState(false);
 
-  const fullName = "SA/MR/AB";
+  const fullName = "NikeCode";
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -185,6 +191,11 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
 
   // Infinite typing effect
   useEffect(() => {

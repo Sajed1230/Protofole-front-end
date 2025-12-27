@@ -38,6 +38,13 @@ const PageContainer = styled.div`
   min-height: 100vh;
   overflow-x: hidden;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: 
+    linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.85)),
+    url('/undefined.jpeg') center/cover no-repeat fixed;
+  
+  @media (max-width: 768px) {
+    background-attachment: scroll;
+  }
 `;
 
 const ContactSection = styled.section`
@@ -328,11 +335,21 @@ const handleSubmit = async (e) => {
     }
   } catch (error) {
     console.error("❌ Error sending message:", error);
-    toast.error(
-      "Something went wrong while sending your message. Please try again."
-    );
+    const errorMessage = error.response?.data?.error || error.message || "Something went wrong while sending your message. Please try again.";
+    toast.error(errorMessage, {
+      duration: 5000,
+      style: {
+        borderRadius: "12px",
+        background: "#ff3b30",
+        color: "#fff",
+        fontWeight: "500",
+        fontSize: "16px",
+        padding: "14px 18px",
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+      },
+    });
   } finally {
-    setLoading(false); // stop spinner
+    setLoading(false);
   }
 };
 
@@ -359,7 +376,7 @@ const handleSubmit = async (e) => {
                 </IconBox>
                 <ContactItemContent>
                   <h3>Email</h3>
-                  <a href="jokersajed11@gmail.com">jokersajed11@gmail.com</a>
+                  <a href="mailto:jokersajed11@gmail.com">jokersajed11@gmail.com</a>
                 </ContactItemContent>
               </ContactItem>
 
@@ -369,7 +386,7 @@ const handleSubmit = async (e) => {
                 </IconBox>
                 <ContactItemContent>
                   <h3>Phone</h3>
-                  <a href="tel:+1234567890">+250 794098366</a>
+                  <a href="tel:+250794098366">+250 794098366</a>
                 </ContactItemContent>
               </ContactItem>
 
@@ -455,7 +472,51 @@ const handleSubmit = async (e) => {
         </ContactContainer>
       </ContactSection>
 
-      <SocialTitle>Connect With Me</SocialTitle>
+      <SocialSection>
+        <SocialTitle>Connect With Me</SocialTitle>
+        <SocialLinks>
+          <SocialLink
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <FaGithub />
+          </SocialLink>
+          <SocialLink
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin />
+          </SocialLink>
+          <SocialLink
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Twitter"
+          >
+            <FaTwitter />
+          </SocialLink>
+          <SocialLink
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <FaInstagram />
+          </SocialLink>
+          <SocialLink
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
+            <FaFacebook />
+          </SocialLink>
+        </SocialLinks>
+      </SocialSection>
     </PageContainer>
   );
 };

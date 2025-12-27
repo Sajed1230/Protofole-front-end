@@ -303,9 +303,9 @@ const About = () => {
             ["HTML & CSS", "100%"],
             ["JavaScript", "95%"],
             ["React & Frontend Frameworks", "95%"],
+            ["TypeScript", "90%"],
             ["Backend Development", "89%"],
-            ["UI/UX Design", "88%"],
-            ["SEO & Performance Optimization", "82%"],
+            ["React Native", "85%"],
           ].map(([name, percent], i) => (
             <SkillItem key={i} delay={0.1 * (i + 1)}>
               <SkillHeader>
