@@ -472,51 +472,7 @@ const handleSubmit = async (e) => {
         </ContactContainer>
       </ContactSection>
 
-      <SocialSection>
-        <SocialTitle>Connect With Me</SocialTitle>
-        <SocialLinks>
-          <SocialLink
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-          >
-            <FaGithub />
-          </SocialLink>
-          <SocialLink
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-          >
-            <FaLinkedin />
-          </SocialLink>
-          <SocialLink
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Twitter"
-          >
-            <FaTwitter />
-          </SocialLink>
-          <SocialLink
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <FaInstagram />
-          </SocialLink>
-          <SocialLink
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-          >
-            <FaFacebook />
-          </SocialLink>
-        </SocialLinks>
-      </SocialSection>
+
     </PageContainer>
   );
 };
