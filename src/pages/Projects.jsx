@@ -262,13 +262,38 @@ const Description = styled.p`
 
 const Tags = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
   max-width: 100%;
   margin: 4px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(102, 126, 234, 0.5) rgba(255, 255, 255, 0.1);
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.5);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(102, 126, 234, 0.7);
+  }
 
   @media (max-width: 600px) {
     gap: 6px;
+    padding-bottom: 6px;
   }
 `;
 
@@ -281,10 +306,13 @@ const Tag = styled.span`
   white-space: nowrap;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.2s ease;
+  flex-shrink: 0;
+  cursor: default;
 
   &:hover {
     background: rgba(102, 126, 234, 0.2);
     border-color: rgba(102, 126, 234, 0.3);
+    transform: translateY(-1px);
   }
 
   @media (max-width: 600px) {
@@ -733,7 +761,7 @@ const Projects = () => {
                 </Description>
                 <Tags>
                   {Array.isArray(p.tools) && p.tools.length > 0 ? (
-                    p.tools.slice(0, 5).map((t, j) => <Tag key={j}>{t}</Tag>)
+                    p.tools.map((t, j) => <Tag key={j}>{t}</Tag>)
                   ) : (
                     <Tag>No tags</Tag>
                   )}
