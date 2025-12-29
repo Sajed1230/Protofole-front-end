@@ -157,7 +157,7 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 450px;
+  min-height: 400px;
 
   &:hover {
     transform: translateY(-8px) translateZ(0);
@@ -254,10 +254,7 @@ const Description = styled.p`
   word-wrap: break-word;
   margin: 0;
   flex-grow: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  overflow: visible;
 `;
 
 const Tags = styled.div`
