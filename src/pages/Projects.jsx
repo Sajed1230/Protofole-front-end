@@ -194,7 +194,7 @@ const ProjectImage = styled.div`
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease, opacity 0.3s ease;
     will-change: transform;
   }
 
@@ -206,6 +206,33 @@ const ProjectImage = styled.div`
     height: 180px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+  }
+`;
+
+const ImagePlaceholder = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  background-size: 200% 100%;
+  animation: ${({ loaded }) => (loaded ? 'none' : 'shimmer 1.5s infinite')};
+  display: ${({ loaded }) => (loaded ? 'none' : 'block')};
+  z-index: 1;
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
   }
 `;
 
@@ -579,6 +606,73 @@ const EmptyState = styled.div`
   }
 `;
 
+// ====================== Lazy Image Component ======================
+const LazyImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;
+
+const LazyImage = ({ src, alt, placeholder }) => {
+  const [imageSrc, setImageSrc] = useState(null);
+  const [imageRef, setImageRef] = useState(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!imageRef) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setImageSrc(src);
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        rootMargin: '100px', // Start loading 100px before the image enters viewport
+      }
+    );
+
+    observer.observe(imageRef);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [imageRef, src]);
+
+  return (
+    <LazyImageWrapper ref={setImageRef}>
+      <ImagePlaceholder loaded={loaded} />
+      {imageSrc && (
+        <img
+          src={imageSrc}
+          alt={alt}
+          onLoad={() => setLoaded(true)}
+          onError={(e) => {
+            e.target.src =
+              placeholder ||
+              "https://via.placeholder.com/400x200?text=Image+Not+Available";
+            setLoaded(true);
+          }}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: loaded ? 1 : 0,
+            transition: 'opacity 0.4s ease',
+            display: 'block',
+          }}
+        />
+      )}
+    </LazyImageWrapper>
+  );
+};
+
 // ====================== Component ======================
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -737,17 +831,10 @@ const Projects = () => {
           {projects.map((p) => (
             <Card key={p._id}>
               <ProjectImage>
-                <img
-                  src={
-                    p.image ||
-                    "https://via.placeholder.com/400x200?text=No+Image"
-                  }
+                <LazyImage
+                  src={p.image || "https://via.placeholder.com/400x200?text=No+Image"}
                   alt={p.appName || "Project"}
-                  loading="lazy"
-                  onError={(e) => {
-                    e.target.src =
-                      "https://via.placeholder.com/400x200?text=Image+Not+Available";
-                  }}
+                  placeholder="https://via.placeholder.com/400x200?text=Image+Not+Available"
                 />
               </ProjectImage>
               <Content>
