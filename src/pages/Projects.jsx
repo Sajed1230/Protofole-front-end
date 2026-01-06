@@ -345,6 +345,18 @@ const Tag = styled.span`
   }
 `;
 
+const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  width: 100%;
+
+  @media (max-width: 600px) {
+    gap: 8px;
+  }
+`;
+
 const LinkButton = styled.a`
   display: inline-block;
   background: rgba(102, 126, 234, 0.15);
@@ -355,9 +367,8 @@ const LinkButton = styled.a`
   text-decoration: none;
   transition: all 0.3s ease;
   font-size: clamp(0.85rem, 2vw, 0.9rem);
-  margin-top: auto;
   text-align: center;
-  align-self: flex-start;
+  width: 100%;
   border: 1px solid rgba(102, 126, 234, 0.3);
 
   &:hover {
@@ -370,9 +381,33 @@ const LinkButton = styled.a`
 
   @media (max-width: 600px) {
     padding: 9px 20px;
-    width: 100%;
-    align-self: stretch;
-    text-align: center;
+  }
+`;
+
+const DownloadButton = styled.a`
+  display: inline-block;
+  background: rgba(46, 213, 115, 0.15);
+  color: #2ed573;
+  padding: 10px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: clamp(0.85rem, 2vw, 0.9rem);
+  text-align: center;
+  width: 100%;
+  border: 1px solid rgba(46, 213, 115, 0.3);
+
+  &:hover {
+    background: linear-gradient(135deg, #2ed573, #26d07c);
+    color: #fff;
+    transform: translateY(-2px) translateZ(0);
+    box-shadow: 0 4px 12px rgba(46, 213, 115, 0.4);
+    border-color: transparent;
+  }
+
+  @media (max-width: 600px) {
+    padding: 9px 20px;
   }
 `;
 
@@ -850,14 +885,28 @@ const Projects = () => {
                     <Tag>No tags</Tag>
                   )}
                 </Tags>
-                {p.projectLink && (
-                  <LinkButton
-                    href={p.projectLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Project →
-                  </LinkButton>
+                {(p.projectLink || p.apkFile) && (
+                  <ButtonsContainer>
+                    {p.projectLink && (
+                      <LinkButton
+                        href={p.projectLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View Project →
+                      </LinkButton>
+                    )}
+                    {p.apkFile && (
+                      <DownloadButton
+                        href={p.apkFile}
+                        download
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        📥 Download App
+                      </DownloadButton>
+                    )}
+                  </ButtonsContainer>
                 )}
               </Content>
             </Card>
