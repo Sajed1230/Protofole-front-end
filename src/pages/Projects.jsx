@@ -652,15 +652,28 @@ const LazyImage = ({ src, alt, placeholder }) => {
   const [imageSrc, setImageSrc] = useState(null);
   const [imageRef, setImageRef] = useState(null);
   const [loaded, setLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  // Validate and set image source
+  const validSrc = src && src.trim() !== '' && (src.startsWith('http://') || src.startsWith('https://')) 
+    ? src 
+    : null;
 
   useEffect(() => {
-    if (!imageRef) return;
+    if (!imageRef || !validSrc) {
+      // If no valid source, show placeholder immediately
+      if (!validSrc) {
+        setLoaded(true);
+        setHasError(true);
+      }
+      return;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setImageSrc(src);
+            setImageSrc(validSrc);
             observer.disconnect();
           }
         });
@@ -675,20 +688,36 @@ const LazyImage = ({ src, alt, placeholder }) => {
     return () => {
       observer.disconnect();
     };
-  }, [imageRef, src]);
+  }, [imageRef, validSrc]);
+
+  const defaultPlaceholder = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Crect fill='%231a1a2e' width='400' height='200'/%3E%3Ctext fill='%23888' font-family='sans-serif' font-size='18' x='50%25' y='50%25' text-anchor='middle' dy='.3em'%3ENo Image%3C/text%3E%3C/svg%3E";
 
   return (
     <LazyImageWrapper ref={setImageRef}>
       <ImagePlaceholder loaded={loaded} />
-      {imageSrc && (
+      {hasError || !validSrc ? (
+        <img
+          src={placeholder || defaultPlaceholder}
+          alt={alt || "No image available"}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: 1,
+            display: 'block',
+          }}
+        />
+      ) : imageSrc ? (
         <img
           src={imageSrc}
-          alt={alt}
+          alt={alt || "Project image"}
           onLoad={() => setLoaded(true)}
           onError={(e) => {
-            e.target.src =
-              placeholder ||
-              "https://via.placeholder.com/400x200?text=Image+Not+Available";
+            setHasError(true);
+            e.target.src = placeholder || defaultPlaceholder;
             setLoaded(true);
           }}
           style={{
@@ -703,7 +732,7 @@ const LazyImage = ({ src, alt, placeholder }) => {
             display: 'block',
           }}
         />
-      )}
+      ) : null}
     </LazyImageWrapper>
   );
 };
@@ -867,9 +896,9 @@ const Projects = () => {
             <Card key={p._id}>
               <ProjectImage>
                 <LazyImage
-                  src={p.image || "https://via.placeholder.com/400x200?text=No+Image"}
+                  src={p.image}
                   alt={p.appName || "Project"}
-                  placeholder="https://via.placeholder.com/400x200?text=Image+Not+Available"
+                  placeholder="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Crect fill='%231a1a2e' width='400' height='200'/%3E%3Ctext fill='%23888' font-family='sans-serif' font-size='18' x='50%25' y='50%25' text-anchor='middle' dy='.3em'%3ENo Image%3C/text%3E%3C/svg%3E"
                 />
               </ProjectImage>
               <Content>
