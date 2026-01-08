@@ -777,6 +777,10 @@ const Projects = () => {
       );
 
       if (res.data && Array.isArray(res.data)) {
+        // Log tools data for debugging
+        res.data.forEach((project, index) => {
+          console.log(`Project ${index + 1} (${project.appName}): tools =`, project.tools, `(type: ${typeof project.tools})`);
+        });
         setProjects(res.data);
       } else {
         setProjects([]);
@@ -907,13 +911,33 @@ const Projects = () => {
                 <Description>
                   {p.description || "No description available"}
                 </Description>
-                <Tags>
-                  {Array.isArray(p.tools) && p.tools.length > 0 ? (
-                    p.tools.map((t, j) => <Tag key={j}>{t}</Tag>)
-                  ) : (
-                    <Tag>No tags</Tag>
-                  )}
-                </Tags>
+                {(() => {
+                  // Handle different tool formats
+                  let toolsList = [];
+                  
+                  if (Array.isArray(p.tools)) {
+                    toolsList = p.tools.filter(t => t && String(t).trim() !== '');
+                  } else if (typeof p.tools === 'string' && p.tools.trim() !== '') {
+                    // If tools is a string, try to parse it or use it as single tool
+                    try {
+                      const parsed = JSON.parse(p.tools);
+                      toolsList = Array.isArray(parsed) 
+                        ? parsed.filter(t => t && String(t).trim() !== '') 
+                        : [p.tools];
+                    } catch {
+                      toolsList = p.tools.trim() ? [p.tools] : [];
+                    }
+                  }
+                  
+                  // Only render Tags container if there are tools to display
+                  return toolsList.length > 0 ? (
+                    <Tags>
+                      {toolsList.map((t, j) => (
+                        <Tag key={j}>{String(t).trim()}</Tag>
+                      ))}
+                    </Tags>
+                  ) : null;
+                })()}
                 {(p.projectLink || p.apkFile) && (
                   <ButtonsContainer>
                     {p.projectLink && (
