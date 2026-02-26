@@ -276,11 +276,19 @@ const About = () => {
             <TypingTitle>{typedText}</TypingTitle>
             <AboutSubtitle>Web Designer & Developer</AboutSubtitle>
             <AboutDescription>
-              Hello! I'm <Highlight>Sajed Murtada</Highlight>, a passionate web
-              developer with a keen eye for design and a love for creating
-              elegant digital experiences. With expertise in modern web
-              technologies, I transform ideas into beautiful, functional
-              websites that make a difference.
+              
+              Hello! I'm <Highlight>Sajed Murtada</Highlight>, a passionate developer specializing in
+              both web and mobile application development. I am the founder of
+              Nile Code, a growing and simple company focused on building modern
+              digital solutions for businesses and individuals. I design and
+              develop responsive, user-friendly web and mobile applications
+              using modern technologies. My goal is to transform ideas into
+              functional, efficient, and visually appealing applications that
+              provide real value. Through Nile Code, I work on creating clean,
+              scalable, and practical solutions while continuously improving my
+              skills and exploring new technologies. I am always learning,
+              building, and working toward creating professional applications
+              that help people and businesses succeed in the digital world.
             </AboutDescription>
             <AboutDescription>
               I specialize in creating <Highlight>responsive</Highlight> and{" "}
