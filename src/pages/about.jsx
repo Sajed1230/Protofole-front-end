@@ -302,10 +302,11 @@ const About = () => {
           {[
             ["HTML & CSS", "100%"],
             ["JavaScript", "95%"],
-            ["React & Frontend Frameworks", "95%"],
-            ["TypeScript", "90%"],
+            ["React + Vite + Next & Frontend Frameworks", "89%"],
+            ["TypeScript", "80%"],
             ["Backend Development", "89%"],
             ["React Native", "85%"],
+            ["Ui/UX", "40%"],
           ].map(([name, percent], i) => (
             <SkillItem key={i} delay={0.1 * (i + 1)}>
               <SkillHeader>
@@ -319,8 +320,6 @@ const About = () => {
           ))}
         </SkillsContainer>
       </SkillsSection>
-
-      
     </PageWrapper>
   );
 };
