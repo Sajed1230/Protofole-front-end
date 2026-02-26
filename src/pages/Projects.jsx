@@ -122,7 +122,7 @@ const ProjectsGrid = styled.div`
   gap: 30px;
   width: 100%;
   box-sizing: border-box;
-  align-items: start;
+  align-items: stretch;
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -156,8 +156,8 @@ const Card = styled.div`
   will-change: transform;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 400px;
+  height: auto;
+  min-height: fit-content;
 
   &:hover {
     transform: translateY(-8px) translateZ(0);
@@ -166,12 +166,10 @@ const Card = styled.div`
   }
 
   @media (max-width: 768px) {
-    min-height: 420px;
     border-radius: 18px;
   }
 
   @media (max-width: 600px) {
-    min-height: auto;
     border-radius: 15px;
 
     &:hover {
@@ -241,7 +239,7 @@ const Content = styled.div`
   text-align: left;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex-grow: 0;
   gap: 12px;
 
   @media (max-width: 768px) {
@@ -280,7 +278,6 @@ const Description = styled.p`
   line-height: 1.6;
   word-wrap: break-word;
   margin: 0;
-  flex-grow: 1;
   overflow: visible;
 `;
 
@@ -349,11 +346,12 @@ const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: auto;
+  margin-top: 12px;
   width: 100%;
 
   @media (max-width: 600px) {
     gap: 8px;
+    margin-top: 10px;
   }
 `;
 

@@ -182,7 +182,7 @@ const Header = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [deleting, setDeleting] = useState(false);
 
-  const fullName = "NikeCode";
+  const fullName = "NileCode";
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
